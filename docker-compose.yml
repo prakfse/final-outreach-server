@@ -1,0 +1,71 @@
+version: '3'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+    command: mongod --noauth  
+  oserver:
+    image: outreach_image_server
+    container_name: docker_outreach_server
+    restart: always
+    build: './outreachserver'
+    ports:
+      - '6006:6006'
+    links:
+      - mongo
+  user:
+    image: outreach_image_user
+    container_name: docker_outreach_user
+    restart: always
+    build: './user'
+    ports:
+      - '6005:6005'
+    links:
+      - mongo
+  event:
+    image: outreach_image_event  
+    container_name: docker_outreach_event
+    restart: always
+    build: './event'
+    ports:
+      - '6002:6002'
+    links:
+      - mongo
+  eventmgmt:
+    image: outreach_image_eventmgmt
+    container_name: docker_outreach_eventmgmt
+    restart: always
+    build: './eventmgmt'
+    ports:
+      - '6004:6004'
+    links:
+      - mongo
+  bulkeventupload:
+    image: outreach_image_bulkeventupload
+    container_name: docker_outreach_bulkeventupload
+    restart: always
+    build: './bulkeventupload'
+    ports:
+      - '6003:6003'
+    links:
+      - mongo            
+  report:
+    image: outreach_image_report  
+    container_name: docker_outreach_report
+    restart: always
+    build: './report'
+    ports:
+      - '6014:6014'
+    links:
+      - mongo
+  mail:
+    image: outreach_image_mail    
+    container_name: docker_outreach_mail
+    restart: always
+    build: './mail'
+    ports:
+      - '6000:6000'
+    links:
+      - mongo

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  serv:
+    container_name: docker-outreach-server
+    restart: always
+    build: .
+    ports:
+      - '6001:6001'
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+    command: mongod --noauth  

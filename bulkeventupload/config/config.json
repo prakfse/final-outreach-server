@@ -1,0 +1,23 @@
+{
+    "development1" : {
+        "PORT" : 6003,
+        "MONGODB_URI" : "mongodb://localhost:27017/outreach",
+        "JWT_SECRET" : "SECRET#123",
+        "JWT_EXT" : "2h",
+        "MAIL_URI" : "http://localhost:6000/api/email"
+    },
+    "development" : {
+        "PORT" : 6003,
+        "MONGODB_URI" : "mongodb://mongo:27017/outreach",
+        "JWT_SECRET" : "SECRET#123",
+        "JWT_EXT" : "2h",
+        "MAIL_URI" : "http://172.18.2.50:6000/api/email"
+    },
+    "production" : {
+        "PORT" : 80,
+        "MONGODB_URI" : "http://localhost:27017/outreach",
+        "JWT_SECRET" : "SECRET#123",
+        "JWT_EXT" : "2h",
+        "MAIL_URI" : "http://172.18.2.50:6000/api/email"
+    }
+}
